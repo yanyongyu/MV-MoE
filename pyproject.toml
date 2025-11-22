@@ -1,0 +1,72 @@
+[project]
+name = "MV-MoE"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.11, <4.0"
+dependencies = [
+  "datasets >=3.1.0, <4.0.0",
+  "deepspeed >=0.16.3, <0.17.0",
+  "matplotlib>=3.10.7",
+  "nlppets>=0.1.0",
+  "peft >=0.13.2, <0.14.0",
+  "rouge-chinese>=1.0.3",
+  "safetensors >=0.4.5, <0.5.0",
+  "scikit-learn>=1.7.2",
+  "seaborn>=0.13.2",
+  "torch >=2.5.1, <3.0.0",
+  "torchinfo >=1.8.0, <2.0.0",
+  "transformers >=4.49.0, <5.0.0",
+  "trl >=0.12.0, <0.13.0",
+]
+
+[dependency-groups]
+dev = ["pre-commit>=4.4.0", "ruff>=0.14.6"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.format]
+line-ending = "lf"
+
+[tool.ruff.lint]
+select = [
+  "F",     # Pyflakes
+  "W",     # pycodestyle warnings
+  "E",     # pycodestyle errors
+  "I",     # isort
+  "UP",    # pyupgrade
+  "ASYNC", # flake8-async
+  "C4",    # flake8-comprehensions
+  "T10",   # flake8-debugger
+  "T20",   # flake8-print
+  "PYI",   # flake8-pyi
+  "PT",    # flake8-pytest-style
+  "Q",     # flake8-quotes
+  "TID",   # flake8-tidy-imports
+  "RUF",   # Ruff-specific rules
+]
+ignore = [
+  "E402",   # module-import-not-at-top-of-file
+  "UP037",  # quoted-annotation
+  "RUF001", # ambiguous-unicode-character-string
+  "RUF002", # ambiguous-unicode-character-docstring
+  "RUF003", # ambiguous-unicode-character-comment
+]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+extra-standard-library = ["typing_extensions"]
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
+
+[tool.pyright]
+exclude = ["data/**/*"]
